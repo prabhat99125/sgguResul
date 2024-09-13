@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <h3>User Data</h3>
+    <div class="main">
+        <div class="content">
+            <form action="/creat" method="post">
+                <input type="text" name="name" id="" placeholder="Name">
+                <input type="text" name="enrollmentNo" id="" placeholder="Enrollment No.">
+                <input type="submit" value="submit">
+            </form>
+        </div>
+        <div class="userTabale">
+            <div class="tables">
+                <p>Name : <%= user.name %></p>
+                <p>Enro : <%= user.enrollmentNo %></p>
+                <p>SPDID : <%= user.spdid %></p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Subject Code</th>
+                            <th>Subject</th>
+                            <th>Internal</th>
+                            <th>External</th>
+                            <th>Overall</th>
+                            <th>Grade Point</th>
+                            <th>Grade Lette</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% user.subjectsAndMarks.forEach((val) => { %>
+                            <tr>
+                                <td><%= val.subjectCode %></td>
+                                <td><%= val.subject %></td>
+                                <td><%= val.internal %></td>
+                                <td><%= val.external %></td>
+                                <td><%= val.overall %></td>
+                                <td><%= (val.internal + val.external) /  10 %></td>
+                                <td><%= val.gread %></td>
+                            </tr>
+                       <% }); %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
